@@ -1,0 +1,50 @@
+name: create-container
+on:
+  schedule:
+    - cron: '00 8 * * MON'  #8:00am every Monday
+  workflow_dispatch:
+
+jobs:
+  push-ghcr:
+    name: Build and push image
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      
+    steps:
+      #checkout push to registry
+      - name: Checkout Push to Registry action
+        uses: actions/checkout@v2
+
+      #build image
+      - name: Build Image
+        id: build_image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          containerfiles: |
+            ./Containerfile
+          image: nickelblue
+          tags: latest ${{ github.sha }} 39
+          oci: false
+
+      #push image
+      - name: Push To GHCR
+        uses: redhat-actions/push-to-registry@v2
+        id: push
+        if: github.ref == 'refs/heads/main'
+        with:
+          image: ${{ steps.build_image.outputs.image }}
+          tags: ${{ steps.build_image.outputs.tags }}
+          registry: ghcr.io/not-justin
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+          extra-args: |
+            --disable-content-trust
+      #echo outputs
+      - name: Echo outputs
+        run: |
+          echo "${{ toJSON(steps.push.outputs) }}"
