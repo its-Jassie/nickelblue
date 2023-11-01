@@ -4,7 +4,7 @@ Requires=xdg-desktop-autostart.target
 
 [Service]
 Type=simple
-ExecStart=/bin/cp -f /etc/just/.justfile %h/.justfile
+ExecStart=/bin/cp -f /etc/.justfile %h/.justfile
 
 [Install]
 WantedBy=default.target
