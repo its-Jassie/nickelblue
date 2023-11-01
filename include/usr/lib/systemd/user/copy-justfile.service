@@ -1,0 +1,10 @@
+[Unit]
+Description=Copy justfile to any user home directory
+Requires=xdg-desktop-autostart.target
+
+[Service]
+Type=simple
+ExecStart=/bin/cp -f /etc/just/.justfile %h/.justfile
+
+[Install]
+WantedBy=default.target

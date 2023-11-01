@@ -1,0 +1,93 @@
+title: nickelblue Configurator
+
+properties:
+  mode: "run-on-change"
+  save_state: "always"
+
+screens:
+
+  first-screen:
+    source: yafti.screen.title
+    values:
+      title: "Welcome to the nickelblue Configurator"
+      description: |
+        Here you will be able to make configuration changes and install flatpaks!
+
+  configure-nickelblue:
+    source: yafti.screen.package
+    values:
+      title: Configure nickelblue
+      show_terminal: true
+      package_manager: yafti.plugin.run
+      groups:
+
+        Import not-Justin's gnome settings and extensions:
+          description: Change some keybinds, enable dark mode and install extensions
+          default: true
+          packages:
+          - Set gnome settings: just gnome-settings
+
+        Set adwaita consistent dark theme:
+          description: Flatpaks, gtk3 applications and native gnome apps share the same theme
+          default: true
+          packages:
+          - Set theme to adwaiata/adw-gtk: just adwaita-gtk3
+
+        Enable AMD p-state power control:
+          description: Sets pstate to guided mode in new 6.4 kernels
+          default: true
+          packages:
+          - Set pstate to guided: just enable-pstate
+  
+  check-user-flathub:
+    source: yafti.screen.consent
+    values:
+      title: Missing Flathub Repository (User)
+      condition:
+        run: flatpak remotes --user --columns=name | grep flathub | wc -l | grep '^0$'
+      description: |
+        We have detected that you don't have Flathub's repository on your current user account. We will now add that repository to your account.
+      actions:
+        - run: flatpak remote-delete --system --force fedora
+        - run: flatpak remote-delete --user --force fedora
+        - run: flatpak remote-delete --system --force flathub
+        - run: flatpak remote-delete --user --force flathub
+        - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+
+  applications:
+    source: yafti.screen.package
+    values:
+      title: Application Installation
+      show_terminal: true
+      package_manager: yafti.plugin.flatpak
+      package_manager_defaults:
+        user: true
+        system: false
+      groups:
+
+        Core Apps:
+          description: Apps needed for basic os operations
+          default: true
+          packages:
+          - Calculator: org.gnome.Calculator
+          - Loupe: org.gnome.Loupe
+          - Mission Center: io.missioncenter.MissionCenter
+          - File Previews: org.gnome.NautilusPreviewer
+          - Disk Usage: org.gnome.baobab
+          - Extensions: com.mattjakeman.ExtensionManager
+          - Flatseal: com.github.tchx84.Flatseal
+          - PinApp: io.github.fabrialberio.pinapp
+          - Warp: app.drey.Warp
+          - Foliate: com.github.johnfactotum.Foliate
+          - Fragments:  de.haeckerfelix.Fragments
+          - Smile Emojis: it.mijorus.smile
+          - BlackBox: com.raggesilver.BlackBox
+
+        Development Apps:
+          description: Apps coding and dev work
+          default: true
+          packages:
+          - VScode: com.visualstudio.code
+          - GitHub: io.github.shiftey.Desktop
+          - Wildcard: com.felipekinoshita.Wildcard
+          - Text Peices: com.github.liferooter.textpieces
