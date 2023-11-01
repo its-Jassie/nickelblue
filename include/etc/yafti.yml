@@ -82,6 +82,7 @@ screens:
           - Fragments:  de.haeckerfelix.Fragments
           - Smile Emojis: it.mijorus.smile
           - BlackBox: com.raggesilver.BlackBox
+          - Warehouse: io.github.flattool.Warehouse
 
         Development Apps:
           description: Apps coding and dev work
