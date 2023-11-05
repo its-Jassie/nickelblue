@@ -9,6 +9,7 @@
 - gnome-console
 - gnome-tweaks
 - just
+- libimobiledevice-utils
 - libratbag-ratbagd
 - neovim
 - openssl
