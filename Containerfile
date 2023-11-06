@@ -65,7 +65,8 @@ RUN pip install --prefix=/usr \
         gnome-extensions-cli
 
 # configure and commit
-RUN rm -rf /tmp/* /var/*  /usr/share/applications/fish.desktop /usr/share/applications/nvim.desktop \
+RUN rm -rf /tmp/* /var/*  /usr/share/applications/fish.desktop /usr/share/applications/nvim.desktop && \
+    ln /usr/lib64/libplist-2.0.so.4 /usr/lib64/libplist.so.3 && \
     systemctl enable com.system76.Scheduler.service && \
     systemctl --global enable copy-justfile.service && \ 
     ostree container commit && \
