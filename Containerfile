@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora-silverblue:39 as nickelblue
+FROM quay.io/fedora-ostree-desktops/silverblue:39 as nickelblue
 
 ADD include /
 
