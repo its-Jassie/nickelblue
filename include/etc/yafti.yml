@@ -83,6 +83,7 @@ screens:
           - Smile Emojis: it.mijorus.smile
           - BlackBox: com.raggesilver.BlackBox
           - Warehouse: io.github.flattool.Warehouse
+          - Cider: sh.cider.Cider
 
         Development Apps:
           description: Apps coding and dev work
