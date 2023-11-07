@@ -27,6 +27,14 @@ adwaita-gtk3:
     flatpak install --user org.gtk.Gtk3theme.adw-gtk3 org.gtk.Gtk3theme.adw-gtk3-dark --assumeyes
     flatpak override --user --filesystem=xdg-config/gtk-3.0:ro --filesystem=xdg-config/gtkrc-2.0:ro --filesystem=xdg-config/gtk-4.0:ro --filesystem=xdg-config/gtkrc:ro
 
+adwaita-steam:
+    #!/usr/bin/env bash
+    cd ~
+    git clone https://github.com/tkashkin/Adwaita-for-Steam
+    cd Adwaita-for-Steam
+    ./install.py
+    cd ~
+    rm -rf Adwaita-for-Steam
 
 gnome-settings:
     dconf load / < /etc/nickelblue.dconf
