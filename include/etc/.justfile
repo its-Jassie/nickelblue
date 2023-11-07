@@ -31,6 +31,7 @@ adwaita-gtk3:
 gnome-settings:
     dconf load / < /etc/nickelblue.dconf
     gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+    gnome-extensions-cli install app-hider@lynith.dev
     gnome-extensions-cli install appindicatorsupport@rgcjonas.gmail.com
     gnome-extensions-cli install blur-my-shell@aunetx
     gnome-extensions-cli install forge@jmmaranan.com
