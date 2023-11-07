@@ -35,3 +35,8 @@ gnome-settings:
     gnome-extensions-cli install appindicatorsupport@rgcjonas.gmail.com
     gnome-extensions-cli install blur-my-shell@aunetx
     gnome-extensions-cli install forge@jmmaranan.com
+
+install-steam:
+    #!/usr/bin/env bash
+    distrobox-create --name bazzite-arch --image ghcr.io/ublue-os/bazzite-arch-gnome --unshare-netns --nvidia --yes
+    distrobox-enter -n bazzite-arch -- 'bash -c "sudo locale-gen && distrobox-export --app steam"'
