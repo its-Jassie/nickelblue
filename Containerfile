@@ -34,6 +34,7 @@ RUN rpm-ostree override remove \
 RUN rpm-ostree install \
         adw-gtk3-theme \
         distrobox \
+        firefoxpwa \
         fish \
         fzf \
         gnome-boxes \
@@ -72,6 +73,7 @@ RUN rm -rf /tmp/* /var/*  /usr/share/applications/fish.desktop /usr/share/applic
     ln /usr/lib64/libplist-2.0.so.4 /usr/lib64/libplist.so.3 && \
     systemctl enable com.system76.Scheduler.service && \
     systemctl --global enable copy-justfile.service && \ 
+    sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/firefoxpwa.repo && \
     ostree container commit && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp

@@ -3,6 +3,7 @@
 ## Added Packages
 - adw-gtk3-theme
 - distrobox
+- firefoxpwa
 - fish
 - fzf 
 - gnome-boxes
@@ -56,3 +57,4 @@
 - enabled system76-scheduler.service
 - added custom .justfile for all users
 - yafti and gnome-extensions-cli installed via pip (root)
+- added firefoxpwa repo
