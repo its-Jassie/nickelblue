@@ -45,7 +45,7 @@ RUN rpm-ostree install \
         firefoxpwa \
         fish \
         fzf \
-        gnome-boxes \
+        virt-manager \
         gnome-console \
         gnome-tweaks \
         just \
