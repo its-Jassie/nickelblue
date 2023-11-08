@@ -72,6 +72,16 @@ RUN rpm-ostree install \
         mesa-va-drivers-freeworld \
         pipewire-codec-aptx
 
+# install vrr-patched mutter
+RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-$(rpm -E %fedora)/kylegospo-gnome-vrr-fedora-$(rpm -E %fedora).repo \
+        -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo && \
+    rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:kylegospo:gnome-vrr \
+        mutter \
+        mutter-common \
+        gnome-control-center \
+        gnome-control-center-filesystem && \
+    sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
+
 # add pip packages
 RUN pip install --prefix=/usr \
         yafti \
