@@ -55,6 +55,7 @@ RUN rpm-ostree install \
         openssl \
         python3-pip \
         sshfs \
+        steam-devices \
         sushi \
         system76-scheduler \
         xwaylandvideobridge \
