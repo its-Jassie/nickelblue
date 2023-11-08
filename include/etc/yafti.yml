@@ -93,3 +93,14 @@ screens:
           - GitHub: io.github.shiftey.Desktop
           - Wildcard: com.felipekinoshita.Wildcard
           - Text Peices: com.github.liferooter.textpieces
+
+        Gaming Apps:
+          description: Apps for gaming and periphials
+          default: false
+          packages:
+          - Steam: com.valvesoftware.Steam
+          - Mangohud: org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/23.08
+          - Discord: com.discordapp.Discord
+          - OBS Studio: com.obsproject.Studio
+          - Minecraft (Prism Launcher): org.prismlauncher.PrismLauncher
+          - Piper: org.freedesktop.Piper
