@@ -76,13 +76,8 @@ screens:
           - Disk Usage: org.gnome.baobab
           - Extensions: com.mattjakeman.ExtensionManager
           - Flatseal: com.github.tchx84.Flatseal
-          - PinApp: io.github.fabrialberio.pinapp
-          - Warp: app.drey.Warp
-          - Foliate: com.github.johnfactotum.Foliate
-          - Fragments:  de.haeckerfelix.Fragments
           - Smile Emojis: it.mijorus.smile
           - BlackBox: com.raggesilver.BlackBox
-          - Warehouse: io.github.flattool.Warehouse
           - Cider: sh.cider.Cider
 
         Development Apps:
@@ -104,3 +99,14 @@ screens:
           - OBS Studio: com.obsproject.Studio
           - Minecraft (Prism Launcher): org.prismlauncher.PrismLauncher
           - Piper: org.freedesktop.Piper
+
+        Utilities:
+          description: Tools and configuration apps
+          default: false
+          packages:
+          - GearLever: it.mijorus.gearlever
+          - PinApp: io.github.fabrialberio.pinapp
+          - Warp: app.drey.Warp
+          - Foliate: com.github.johnfactotum.Foliate
+          - Fragments:  de.haeckerfelix.Fragments
+          - Warehouse: io.github.flattool.Warehouse
