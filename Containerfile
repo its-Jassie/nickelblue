@@ -9,6 +9,14 @@ RUN rpm-ostree install \
     wget https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-$(rpm -E %fedora)/kylegospo-system76-scheduler-fedora-$(rpm -E %fedora).repo \
         -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo
         
+# install xone-kmod
+COPY --from=ghcr.io/ublue-os/akmods:main-39 /rpms/ /tmp/rpms
+RUN wget https://negativo17.org/repos/fedora-steam.repo \
+        -O /etc/yum.repos.d/_negativo_steam.repo && \
+    rpm-ostree install \
+        /tmp/rpms/kmods/kmod-xone-*.rpm && \
+    sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_negativo_steam.repo
+
 # remove unwanted packages and non-free codecs
 RUN rpm-ostree override remove \
 	yelp \
