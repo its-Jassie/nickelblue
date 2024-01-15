@@ -1,7 +1,7 @@
 name: create-container
 on:
   schedule:
-    - cron: '00 8 * * MON'  #8:00am every Monday
+    - cron: '00 8 * * MON,FRI'  #8:00am every Monday
   workflow_dispatch:
 
 jobs:
