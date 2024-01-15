@@ -59,7 +59,6 @@ RUN rpm-ostree install \
         steam-devices \
         sushi \
         system76-scheduler \
-        xwaylandvideobridge \
         zsh
 
 # add non-free codecs
