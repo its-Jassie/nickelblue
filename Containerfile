@@ -6,6 +6,7 @@ ADD include /
 RUN rpm-ostree install \
         https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
         https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
+        sudo sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/rpmfusion-free-updates-testing.repo && \
     wget https://copr.fedorainfracloud.org/coprs/kylegospo/system76-scheduler/repo/fedora-$(rpm -E %fedora)/kylegospo-system76-scheduler-fedora-$(rpm -E %fedora).repo \
         -O /etc/yum.repos.d/_copr_kylegospo-system76-scheduler.repo
         
