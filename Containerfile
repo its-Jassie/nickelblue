@@ -59,6 +59,7 @@ RUN rpm-ostree install \
         steam-devices \
         sushi \
         system76-scheduler \
+        gnome-shell-extension-system76-scheduler \
         zsh
 
 # add non-free codecs
