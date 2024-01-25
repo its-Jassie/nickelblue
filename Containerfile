@@ -97,6 +97,7 @@ RUN rm -rf /tmp/* /var/*  /usr/share/applications/fish.desktop /usr/share/applic
     systemctl enable com.system76.Scheduler.service && \
     systemctl --global enable copy-justfile.service && \ 
     systemctl --global enable sunshine.service && \
+    systemctl enable sunshine-workaround.service && \
     sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/firefoxpwa.repo && \
     sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_*.repo && \
     ostree container commit && \
