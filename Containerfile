@@ -82,6 +82,9 @@ RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora
         gnome-control-center-filesystem && \
     sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
 
+# install sunshine streamer
+RUN rpm-ostree install -y https://github.com/LizardByte/Sunshine/releases/download/nightly-dev/sunshine-fedora-$(rpm -E %fedora)-amd64.rpm
+
 # add pip packages
 RUN pip install --prefix=/usr \
         yafti \
@@ -92,6 +95,7 @@ RUN rm -rf /tmp/* /var/*  /usr/share/applications/fish.desktop /usr/share/applic
     ln /usr/lib64/libplist-2.0.so.4 /usr/lib64/libplist.so.3 && \
     systemctl enable com.system76.Scheduler.service && \
     systemctl --global enable copy-justfile.service && \ 
+    systemctl --global enable sunshine.service && \
     sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/firefoxpwa.repo && \
     sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/_copr_*.repo && \
     ostree container commit && \
